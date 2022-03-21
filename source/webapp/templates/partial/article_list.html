@@ -10,15 +10,15 @@
 
     <p><a href="{{ article.get_absolute_url }}">Подробнее...</a></p>
     {% if user.is_authenticated %}
-    {% if user not in article.users_liked.all %}
-    <button onclick="onLikeClick(event)"
+{#    {% if user not in article.users_liked.all %}#}
+    <button id="{{ article.id }}like_button" onclick="onLikeClick(event)"
             data-likes-url="{% url 'webapp:article_add_like' article.pk %}"
             >like</button>
-        {% else %}
-    <button onclick="onLikeClick(event)"
+{#        {% else %}#}
+    <button id="{{ article.id }}unlike_button" onclick="onUnLikeClick(event)"
             data-likes-url="{% url 'webapp:article_remove_like' article.pk %}"
             >Unlike</button>
-        {% endif %}
+{#        {% endif %}#}
     {% endif %}
     <div id="{{ article.pk }}count">likes: {{ article.users_liked.count }}</div>
 
