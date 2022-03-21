@@ -9,6 +9,20 @@
     <h3>{{ article.upper }}</h3>
 
     <p><a href="{{ article.get_absolute_url }}">Подробнее...</a></p>
+    {% if user.is_authenticated %}
+    {% if user not in article.users_liked.all %}
+    <button id=""
+            onclick="onLikeClick(event)"
+            data-likes-url="{% url 'webapp:article_add_like' article.pk %}"
+            >like</button>
+        {% else %}
+    <button id=""
+            onclick="onLikeClick(event)"
+            data-likes-url="{% url 'webapp:article_remove_like' article.pk %}"
+            >Unlike</button>
+        {% endif %}
+    {% endif %}
+    <div>likes: {{ article.users_liked.count }}</div>
 
     {% if perms.webapp.change_article or user == article.author %}
         <p><a href="{% url "webapp:article_update_view" article.pk %}">Редактировать</a></p>

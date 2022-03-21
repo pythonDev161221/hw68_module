@@ -25,6 +25,7 @@
     <h1>{{ article.author }}</h1>
     <h3>{{ article.title }}</h3>
     <p>{{ article.content }}</p>
+    <a href="{% url 'webapp:article_add_like' article.pk %}">like</a>
     <br>
     <h3>Комментарии</h3>
     {% for comment in comments %}
@@ -45,4 +46,5 @@
     {% for tag in article.tags.all %}
         {{ tag.name }}{% if not forloop.last %}, {% else %}. {% endif %}
     {% endfor %}
+
 {% endblock %}

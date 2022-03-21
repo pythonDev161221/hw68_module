@@ -4,7 +4,8 @@ from django.contrib.auth.mixins import (
 )
 from django.http import JsonResponse
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.views import View
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 from webapp.forms import ArticleForm, ArticleDeleteForm
 from webapp.models import Article
@@ -71,3 +72,25 @@ class ArticleDeleteView(PermissionRequiredMixin, DeleteView):
         if self.request.method == "POST":
             kwargs['instance'] = self.object
         return kwargs
+
+
+class ArticleAddLike(LoginRequiredMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        print('add like')
+        article = Article.objects.get(pk=self.kwargs.get('pk'))
+        article.users_liked.add(self.request.user)
+        return JsonResponse({"like": f"{article.users_liked.count()}"})
+        # return reverse('webapp:')
+
+
+class ArticleRemoveLike(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        print('remove like')
+        article = Article.objects.get(pk=self.kwargs.get('pk'))
+        article.users_liked.remove(self.request.user)
+        return JsonResponse({"like": f"{article.users_liked.count()}"})
+
+
+
+
