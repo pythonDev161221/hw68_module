@@ -33,13 +33,29 @@
         <span>{{ forloop.counter }}</span>
         <p>{{ comment.author }}</p>
         <p>{{ comment.content }}</p>
+
         {% if user.is_authenticated %}
-            <button onclick="commentLikeClick(event)"
+            {% if user not in comment.users_liked.all %}
+            <button onclick="commentLikeLikeClick(event)"
+                    id="{{ comment.pk }}like_button"
                     data-likes-url="{% url 'webapp:comment_add_like' comment.pk %}"
             >Like</button>
-            <button onclick="commentLikeClick(event)"
+            <button onclick="commentUnLikeClick(event)"
+                    id="{{ comment.pk }}unlike_button"
+                    style="display: none"
                     data-likes-url="{% url 'webapp:comment_remove_like' comment.pk %}"
             >Unlike</button>
+                {% else %}
+                <button onclick="commentLikeLikeClick(event)"
+                        style="display: none"
+                        id="{{ comment.pk }}like_button"
+                    data-likes-url="{% url 'webapp:comment_add_like' comment.pk %}"
+            >Like</button>
+            <button onclick="commentUnLikeClick(event)"
+                    id="{{ comment.pk }}unlike_button"
+                    data-likes-url="{% url 'webapp:comment_remove_like' comment.pk %}"
+            >Unlike</button>
+                {% endif %}
             <div id="{{ comment.pk }}likes">likes: {{ comment.users_liked.count }}</div>
         {% endif %}
 
