@@ -29,6 +29,8 @@ class Article(BaseModel):
         default=1,
         verbose_name="Автор",
     )
+    users_liked = models.ManyToManyField(User, related_name="likes")
+    likes = models.PositiveIntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('webapp:article_view', kwargs={'pk': self.pk})

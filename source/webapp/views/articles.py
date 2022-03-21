@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     PermissionRequiredMixin
 )
+from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
@@ -14,10 +15,16 @@ class IndexView(SearchView):
     model = Article
     context_object_name = "articles"
     template_name = "articles/index.html"
-    paginate_by = 3
-    paginate_orphans = 0
+    paginate_by = 10
+    paginate_orphans = 1
     search_fields = ["title__icontains", "author__icontains"]
-    ordering=["-updated_at"]
+    ordering = ["-updated_at"]
+
+    # def get(self, request, *args, **kwargs):
+    #     print(request.user)
+    #     return JsonResponse(
+    #         {"key": "value", "key2": [1, 2, 3]}
+    #     )
 
 
 class ArticleCreateView(PermissionRequiredMixin, CreateView):
@@ -57,6 +64,7 @@ class ArticleDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = "articles/delete.html"
     success_url = reverse_lazy('webapp:index')
     form_class = ArticleDeleteForm
+    permission_required = "webapp.delete_article"
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
