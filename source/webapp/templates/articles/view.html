@@ -25,7 +25,8 @@
     <h1>{{ article.author }}</h1>
     <h3>{{ article.title }}</h3>
     <p>{{ article.content }}</p>
-    <a href="{% url 'webapp:article_add_like' article.pk %}">like</a>
+    {% include 'partial/article_like.html' %}
+    <div id="{{ article.pk }}count">likes: {{ article.users_liked.count }}</div>
     <br>
     <h3>Комментарии</h3>
     {% for comment in comments %}
