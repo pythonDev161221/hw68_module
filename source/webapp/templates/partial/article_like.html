@@ -2,14 +2,14 @@
     {% if user not in article.users_liked.all %}
     <button id="{{ article.id }}like_button" onclick="onLikeClick(event)"
             data-likes-url="{% url 'webapp:article_add_like' article.pk %}"
-            >like</button>
+            >Like</button>
         <button id="{{ article.id }}unlike_button" style="display: none" onclick="onUnLikeClick(event)"
             data-likes-url="{% url 'webapp:article_remove_like' article.pk %}"
             >Unlike</button>
         {% else %}
         <button id="{{ article.id }}like_button" style="display: none" onclick="onLikeClick(event)"
             data-likes-url="{% url 'webapp:article_add_like' article.pk %}"
-            >like</button>
+            >Like</button>
     <button id="{{ article.id }}unlike_button" onclick="onUnLikeClick(event)"
             data-likes-url="{% url 'webapp:article_remove_like' article.pk %}"
             >Unlike</button>

@@ -33,6 +33,15 @@
         <span>{{ forloop.counter }}</span>
         <p>{{ comment.author }}</p>
         <p>{{ comment.content }}</p>
+        {% if user.is_authenticated %}
+            <button onclick="commentLikeClick(event)"
+                    data-likes-url="{% url 'webapp:comment_add_like' comment.pk %}"
+            >Like</button>
+            <button onclick="commentLikeClick(event)"
+                    data-likes-url="{% url 'webapp:comment_remove_like' comment.pk %}"
+            >Unlike</button>
+            <div id="{{ comment.pk }}likes">likes: {{ comment.users_liked.count }}</div>
+        {% endif %}
 
         {% if perms.webapp.change_comment or user == commnet.author %}
             <p><a href="{% url "webapp:comment_update_view" comment.pk %}">Изменить</a></p>
