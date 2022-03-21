@@ -1,6 +1,8 @@
+Локальный файл настроек проекта не найден
 [
 {
   "model": "auth.group",
+  "pk": 1,
   "fields": {
     "name": "Авторы",
     "permissions": [
@@ -19,6 +21,7 @@
 },
 {
   "model": "auth.group",
+  "pk": 2,
   "fields": {
     "name": "Модераторы",
     "permissions": [

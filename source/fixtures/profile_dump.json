@@ -1,11 +1,10 @@
+Локальный файл настроек проекта не найден
 [
 {
   "model": "accounts.profile",
   "pk": 1,
   "fields": {
-    "user": [
-      "author"
-    ],
+    "user": 2,
     "birth_date": "1989-02-20",
     "avatar": "avatars/low-poly-grid-haikei_Vy7DtH8.png"
   }
@@ -14,9 +13,7 @@
   "model": "accounts.profile",
   "pk": 2,
   "fields": {
-    "user": [
-      "moderator"
-    ],
+    "user": 3,
     "birth_date": "1999-02-21",
     "avatar": "avatars/low-poly-grid-haikei_FzLlEzJ.png"
   }

@@ -1,9 +1,11 @@
+Локальный файл настроек проекта не найден
 [
 {
   "model": "auth.user",
+  "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$320000$TyLGPOs8rHrF9AR45eGoBR$9rZBQCtLsjp5ltqG6UuZzwKd98obT4uM9bqAH0ZD+f4=",
-    "last_login": "2022-02-21T12:02:49.414Z",
+    "last_login": "2022-03-21T12:36:49.860Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -18,9 +20,10 @@
 },
 {
   "model": "auth.user",
+  "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$320000$oiAiUECoWKFEFv6GI0IBun$yToTMizhPjL4Uz6pU5XEfaurwovIeapkRDX7liOb+AQ=",
-    "last_login": null,
+    "last_login": "2022-03-21T12:36:40.504Z",
     "is_superuser": false,
     "username": "author",
     "first_name": "Author",
@@ -30,18 +33,17 @@
     "is_active": true,
     "date_joined": "2022-02-21T12:03:40Z",
     "groups": [
-      [
-        "Авторы"
-      ]
+      1
     ],
     "user_permissions": []
   }
 },
 {
   "model": "auth.user",
+  "pk": 3,
   "fields": {
     "password": "pbkdf2_sha256$320000$hfh0HW6SHzfxIdaQni38f7$J+wDwChYgK2OwwHV32jCWQs3lMjVFo+Ljd5y5hB9AWg=",
-    "last_login": null,
+    "last_login": "2022-03-19T10:25:19.445Z",
     "is_superuser": false,
     "username": "moderator",
     "first_name": "Moderator",
@@ -51,9 +53,7 @@
     "is_active": true,
     "date_joined": "2022-02-21T12:06:59Z",
     "groups": [
-      [
-        "Модераторы"
-      ]
+      2
     ],
     "user_permissions": []
   }
