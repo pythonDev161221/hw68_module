@@ -1,9 +1,7 @@
         async function onClick(event){
                 let url = event.target.dataset.articlesUrl;
-                // console.log(url)
                 let response = await fetch(url);
                 let responseBody = await response.json();
-                // console.log(responseBody);
         }
         function onLoad(){
                 let btn = document.getElementById("btn");
@@ -19,10 +17,9 @@ async function onLikeClick(event){
     let id = responseBody.article_id
     div_like = document.getElementById(`${id}count`)
     div_like.innerText = `likes: ${responseBody.like}`
-    document.getElementById(`${id}like_button`).style.visibility = "hidden"
-    document.getElementById(`${id}unlike_button`).style.visibility = "visible"
-    console.log(button_like)
-    button_like.style.display = 'toggle'
+    document.getElementById(`${id}like_button`).style.display = "none"
+    document.getElementById(`${id}unlike_button`).style.display = "block"
+
 }
 
 async function onUnLikeClick(event){
@@ -32,8 +29,8 @@ async function onUnLikeClick(event){
     let id = responseBody.article_id
     div_like = document.getElementById(`${id}count`)
     div_like.innerText = `likes: ${responseBody.like}`
-    document.getElementById(`${id}unlike_button`).style.visibility = 'hidden'
-    document.getElementById(`${id}like_button`).style.visibility = 'visible'
+    document.getElementById(`${id}unlike_button`).style.display = 'none'
+    document.getElementById(`${id}like_button`).style.display = 'block'
 
 }
 
