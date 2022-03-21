@@ -77,19 +77,16 @@ class ArticleDeleteView(PermissionRequiredMixin, DeleteView):
 class ArticleAddLike(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
-        print('add like')
         article = Article.objects.get(pk=self.kwargs.get('pk'))
         article.users_liked.add(self.request.user)
-        return JsonResponse({"like": f"{article.users_liked.count()}"})
-        # return reverse('webapp:')
+        return JsonResponse({"like": f"{article.users_liked.count()}", 'article_id': article.pk})
 
 
 class ArticleRemoveLike(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        print('remove like')
         article = Article.objects.get(pk=self.kwargs.get('pk'))
         article.users_liked.remove(self.request.user)
-        return JsonResponse({"like": f"{article.users_liked.count()}"})
+        return JsonResponse({"like": f"{article.users_liked.count()}", 'article_id': article.pk})
 
 
 

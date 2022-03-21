@@ -14,10 +14,13 @@
 
 async function onLikeClick(event){
     let url = event.target.dataset.likesUrl;
-    console.log(url);
     let response = await fetch(url);
-    console.log(response);
-}
+    let responseBody = await response.json()
+    console.log(responseBody)
+    let id = responseBody.article_id
+    console.log(id)
+    div_like = document.getElementById(`${id}count`)
+    console.log(div_like)
+    div_like.innerText = `likes: ${responseBody.like}`
 
-// button = document.getElementById("like_id");
-//         button.addEventListener("click", onLikeClick);
+}
