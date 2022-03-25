@@ -1,9 +1,9 @@
 from django.urls import path
 
-from api_v2.views import article_list_view
+from api_v2.views import ArticleListView
 
 app_name = "v2"
 
 urlpatterns = [
-    path("articles/", article_list_view, name="articles"),
+    path("articles/", ArticleListView.as_view(), name="articles"),
 ]
