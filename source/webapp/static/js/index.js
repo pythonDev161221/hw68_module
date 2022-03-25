@@ -12,6 +12,7 @@
 
 async function onLikeClick(event){
     let url = event.target.dataset.likesUrl;
+    console.log(url)
     let response = await fetch(url);
     let responseBody = await response.json()
     let id = responseBody.article_id

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'webapp',
     'accounts',
     'api_v1',
+    'api_v2',
 
     # Lib apps
 ]
