@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponseNotAllowed, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
 from rest_framework.response import Response
-from rest_framework.status import HTTP_400_BAD_REQUEST
+from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_204_NO_CONTENT
 from rest_framework.views import APIView
 
 from api_v2.serializers import ArticleSerializer
@@ -34,7 +34,6 @@ class ArticleListView(APIView):
 
 
 class ArticleSingleObjectView(APIView):
-    print('single object view')
     serializer_class = ArticleSerializer
 
     def put(self, request, *args, pk=None, **kwargs):
@@ -69,8 +68,13 @@ class ArticleUpdateView(APIView):
             return Response(status=HTTP_400_BAD_REQUEST)
 
 
-# class ArticleDetailView()
+class ArticleDeleteView(APIView):
+    serializer_class = ArticleSerializer
 
+    def delete(self, request, *args, **kwargs):
+        article = get_object_or_404(Article, pk=kwargs.get('pk'))
+        article.delete()
+        return Response(kwargs.get('pk'), status=HTTP_204_NO_CONTENT)
 
 
 # class ArticleListView(View):
