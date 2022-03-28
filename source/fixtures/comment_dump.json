@@ -1,0 +1,56 @@
+Локальный файл настроек проекта не найден
+[
+{
+  "model": "webapp.comment",
+  "pk": 1,
+  "fields": {
+    "created_at": "2022-03-21T10:57:48.542Z",
+    "updated_at": "2022-03-21T10:57:48.542Z",
+    "content": "good article",
+    "author": 1,
+    "article": 5,
+    "users_liked": []
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 2,
+  "fields": {
+    "created_at": "2022-03-21T11:45:09.574Z",
+    "updated_at": "2022-03-21T11:45:09.574Z",
+    "content": "good article",
+    "author": 1,
+    "article": 3,
+    "users_liked": []
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 5,
+  "fields": {
+    "created_at": "2022-03-21T12:30:40.763Z",
+    "updated_at": "2022-03-21T12:30:40.763Z",
+    "content": "srgterg",
+    "author": 1,
+    "article": 4,
+    "users_liked": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 7,
+  "fields": {
+    "created_at": "2022-03-21T12:32:37.402Z",
+    "updated_at": "2022-03-21T12:32:37.402Z",
+    "content": "dstgsrt",
+    "author": 1,
+    "article": 4,
+    "users_liked": [
+      2
+    ]
+  }
+}
+]

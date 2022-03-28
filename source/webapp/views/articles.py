@@ -88,6 +88,3 @@ class ArticleRemoveLike(LoginRequiredMixin, View):
         article.users_liked.remove(self.request.user)
         return JsonResponse({"like": f"{article.users_liked.count()}", 'article_id': article.pk})
 
-
-
-
