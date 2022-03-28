@@ -21,8 +21,6 @@ def echo_view(request):
         "method": request.method,
         "datetime": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
-
-    print(request.body)
     if request.body:
         response_data["body"] = json.loads(request.body)
 
@@ -40,7 +38,6 @@ def article_list_view(request):
 
     elif request.method == "POST":
         article_data = json.loads(request.body)
-        print(article_data)
         article = Article.objects.create(**article_data)
 
         return JsonResponse(
@@ -51,5 +48,4 @@ def article_list_view(request):
             },
             status=HTTPStatus.CREATED
         )
-
     return HttpResponseNotAllowed(["GET", "POST"])
