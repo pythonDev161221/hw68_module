@@ -2,8 +2,10 @@
 
 from rest_framework import serializers
 
+from webapp.models import Article
 
-class ArticleSerializer(serializers.Serializer):
+
+class ArticleSimpleSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(
             required=True,
@@ -23,3 +25,23 @@ class ArticleSerializer(serializers.Serializer):
         read_only=True,
     )
 
+    def create(self, validated_data):
+        return Article.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        for field, value in validated_data.items():
+            setattr(instance, field, value)
+
+        instance.save()
+
+        return instance
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    """
+    Модельный сериалайзер для модели `Articles`.
+    """
+    class Meta:
+        model = Article
+        fields = ("id", "title", "content", "author_id")
+        read_only_fields = ("id", "author_id")
